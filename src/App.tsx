@@ -1,8 +1,9 @@
 import './App.css';
-
 import { DataContext } from './context/Context';
-import Child from './components/Child';
 import useInitDataContext from './context/useInitDataContext';
+
+import Calendar from './components/containers/calendar/Calendar';
+import AddEvent from './components/containers/addEvent/AddEvent';
 
 function App() {
 
@@ -11,7 +12,8 @@ function App() {
   return (
     <>
       <DataContext.Provider value={initialDataContext}>
-        <Child/>
+        <Calendar/>
+        <AddEvent/>
       </DataContext.Provider>
     </>
   )
