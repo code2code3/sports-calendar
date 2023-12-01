@@ -13,7 +13,6 @@ function App() {
     <>
       <DataContext.Provider value={initialDataContext}>
         <Calendar/>
-        <AddEvent/>
       </DataContext.Provider>
     </>
   )

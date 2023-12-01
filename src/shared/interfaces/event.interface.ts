@@ -9,7 +9,7 @@ interface Result {
 
 interface Event { 
     season: number,
-    status: "played" | "scheduled",
+    status: "scheduled" | "played",
     dateVenue: string,
     homeTeam: TeamInfo | null,
     awayTeam: TeamInfo | null,
