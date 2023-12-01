@@ -7,9 +7,9 @@ interface Result {
     awayGoals: number,
 }
 
-interface Event { 
+type Event = { 
     season: number,
-    status: "scheduled" | "played",
+    status: string,
     dateVenue: string,
     homeTeam: TeamInfo | null,
     awayTeam: TeamInfo | null,
