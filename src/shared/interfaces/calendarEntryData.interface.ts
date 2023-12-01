@@ -2,7 +2,7 @@ import { Event } from './event.interface';
 
 interface CalendarEntryData {
     displayValue: string,
-    event: Event | undefined,
+    events: Event[],
     inCurrentMonth: true | false,
 };
 

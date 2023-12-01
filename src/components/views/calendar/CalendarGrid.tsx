@@ -24,6 +24,7 @@ export default function CalendarGrid({ rows, cols, data }: Props) {
                     className={data[cellKey].inCurrentMonth ? "active" : "inactive"}
                 >
                     {data[cellKey].displayValue}
+                    {data[cellKey].events.length > 0 ? `(${data[cellKey].events.length})` : ""}
                 </td>
             );
 
