@@ -16,6 +16,7 @@ export default function useInsertData_currentMonth(date: Date, calendarData: Cal
         };
 
         calendarData[i] = { 
+            date: new Date(date.getFullYear(), date.getMonth(), j),
             displayValue: String(j), 
             events: eventsOfDay,
             inCurrentMonth: true,

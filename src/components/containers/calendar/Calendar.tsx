@@ -31,7 +31,7 @@ export default function Calendar() {
     const calendarCols = 7;
 
     let calendarData: CalendarEntryData[] = new Array(calendarRows*calendarCols)
-    .fill({ displayValue: "", events: [], inCurrentMonth: false });
+    .fill({ date: undefined, displayValue: "", events: [], inCurrentMonth: false });
 
     const [eventsPrevMonth, eventsCurrentMonth, eventsNextMonth ]: Array<Event[]> = useGetEventsInViewableMonths(date, events);
     useInsertData_currentMonth(date, calendarData, eventsCurrentMonth);
@@ -49,5 +49,6 @@ export default function Calendar() {
         prevMonth={ () => { prevMonth(setDate) } }
         nextMonth={ () => { nextMonth(setDate) } }
         calendarData={calendarData}
+        date={date}
     />;
 };

@@ -7,6 +7,10 @@ interface Result {
     awayGoals: number,
 }
 
+interface Stage {
+    name?: string,
+}
+
 type Event = { 
     season: number,
     status: string,
@@ -15,6 +19,7 @@ type Event = {
     homeTeam: TeamInfo | null,
     awayTeam: TeamInfo | null,
     originCompetitionName: string,
+    stage?: Stage,
     result: Result | null,
 };
 

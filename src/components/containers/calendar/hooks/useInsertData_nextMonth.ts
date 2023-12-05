@@ -16,6 +16,7 @@ export default function useInsertData_nextMonth(date: Date, calendarData: Calend
         };
         
         calendarData[i] = { 
+            date: new Date(date.getFullYear(), date.getMonth()+1, j+1),
             displayValue: String(j+1), 
             events: eventsOfDay,
             inCurrentMonth: false,

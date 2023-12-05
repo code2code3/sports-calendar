@@ -17,6 +17,7 @@ export default function insertCalendarData_prevMonth(date: Date, calendarData: C
         };
 
         calendarData[i] = { 
+            date: new Date(date.getFullYear(), date.getMonth()-1, (lastDate_prevMonth-firstDay_currentMonth)+(i+1)),
             displayValue: String((lastDate_prevMonth-firstDay_currentMonth)+(i+1)), 
             events: eventsOfDay,
             inCurrentMonth: false,
