@@ -12,7 +12,8 @@ function App() {
   return (
     <>
       <DataContext.Provider value={initialDataContext}>
-        <Calendar/>
+        <AddEvent/>
+        <Calendar></Calendar>
       </DataContext.Provider>
     </>
   )
