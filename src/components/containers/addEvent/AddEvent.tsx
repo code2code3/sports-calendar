@@ -5,11 +5,10 @@ import { Event } from "../../../shared/interfaces/event.interface";
 
 import AddEventView from "../../views/addEvent/AddEvent";
 
-const handleSubmit = (e: React.FormEvent, addEvent: (event: Event) => void) => {
+const handleSubmit = (e: any, addEvent: (event: Event) => void) => {
     e.preventDefault();
     const fd = new FormData(e.target);
     const userEvent = Object.fromEntries(fd);
-    console.log(userEvent);
     addEvent({
         season: Number(userEvent.season),
         status: String(userEvent.status),

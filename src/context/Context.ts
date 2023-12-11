@@ -4,7 +4,7 @@ import { Event } from '../shared/interfaces/event.interface';
 
 const DataContext = createContext({
     data: [] as Event[],
-    addEvent: (event: Event) => {},
+    addEvent: (event: Event) => { event },
 });
 
 export { DataContext };

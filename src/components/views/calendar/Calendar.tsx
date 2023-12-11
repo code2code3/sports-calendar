@@ -35,21 +35,24 @@ export default function CalendarView({ rows, cols, month, year, prevMonth, nextM
 
     const CalendarView = <>
         <div>
-            <div>
-                <span>{month} {year}</span>
-                <button onClick={ prevMonth }>Prev</button>
-                <button onClick={ nextMonth }>Next</button>
+            <div className="flex justify-between items-center">
+                <span className="font-bold md:text-xl">{month} {year}</span>
+                <span>
+                    <button className="text-lg md:text-2xl text-gray-400" onClick={ prevMonth }>&lt;</button>
+                    {" "}
+                    <button className="text-lg md:text-2xl text-gray-400" onClick={ nextMonth }>&gt;</button>
+                </span>
             </div>
-            <table>
+            <table className="w-full table-fixed text-right my-2">
                 <thead>
                     <tr>
-                        <th>Mon</th>
-                        <th>Tue</th>
-                        <th>Wed</th>
-                        <th>Thu</th>
-                        <th>Fri</th>
-                        <th>Sat</th>
-                        <th>Sun</th>
+                        <th className="font-normal">Mon</th>
+                        <th className="font-normal">Tue</th>
+                        <th className="font-normal">Wed</th>
+                        <th className="font-normal">Thu</th>
+                        <th className="font-normal">Fri</th>
+                        <th className="font-normal">Sat</th>
+                        <th className="font-normal">Sun</th>
                     </tr>
                 </thead>
                 <tbody>

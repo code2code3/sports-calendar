@@ -20,14 +20,29 @@ export default function CalendarGrid({ rows, cols, data, openEventsView }: Props
 
             const cellKey = (i*cols) + j;
             const dayHasEvents = data[cellKey].events.length > 0;
+            const isActive = data[cellKey].inCurrentMonth ? "active" : "inactive"
             row.push(
                 <td 
                     key={cellKey} 
-                    className={data[cellKey].inCurrentMonth ? "active" : "inactive"}
+                    className={ `${isActive} h-12 w-12 md:w-24 md:h-24 border border-gray-300 m-0 p-0` }
                 >
-                    <button onClick={ () => { openEventsView(data[cellKey].date, data[cellKey].events) } }>
-                        {data[cellKey].displayValue}
-                        {dayHasEvents ? `(${data[cellKey].events.length})` : ""}
+                    <button 
+                        className="flex flex-col justify-around w-full h-full text-s md:text-lg m-0"
+                        onClick={ () => { openEventsView(data[cellKey].date, data[cellKey].events) } }
+                    >
+                        <span className="flex flex-row justify-end w-full m-0 pr-2">{data[cellKey].displayValue}</span>
+                        {dayHasEvents 
+                            ? <>
+                                <div className="flex flex-row justify-center w-full">
+                                    <div 
+                                        className="w-full m-0 m-auto w-4 h-4 md:w-8 md:h-8 text-white rounded-full text-sm md:text-lg bg-sky-500/75 flex items-center justify-center font-mono"
+                                    >
+                                    {data[cellKey].events.length}
+                                    </div>   
+                                </div>
+                            </> 
+                            : <div className="w-3 h-3"></div>
+                        }
                     </button>
                 </td>
             );

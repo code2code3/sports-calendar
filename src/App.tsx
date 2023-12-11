@@ -27,10 +27,16 @@ function App() {
   const [view, setView] = useState<Views>('calendar');
 
   return (
-    <>
+    <>      
       <DataContext.Provider value={initialDataContext}>
-        <Navigation setView={setView}/>
-        <MainView view={view}/>
+        <div className='w-screen flex items-center justify-center'>
+          <div className='w-96 md:w-[50%] '>
+            <Navigation setView={setView} view={view}/>
+            <main className='px-4 py-4'>
+              <MainView view={view}/>
+            </main>
+          </div>
+        </div>
       </DataContext.Provider>
     </>
   )

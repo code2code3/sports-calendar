@@ -3,9 +3,9 @@ import { Event } from "../../../shared/interfaces/event.interface";
 
 const SingleEvent = ({ event }: { event: Event }) => {
     return <>
-        <div>
-            <span>{ event.homeTeam?.name || "TBC"}</span> 
-            <span>{ event.status === 'played' 
+        <div className="flex justify-between">
+            <span className="flex-1 w-16 text-right text:base md:text-xl">{ event.homeTeam?.name || "TBC"}</span> 
+            <span className="flex-1 w-8 text-center text:base md:text-xl">{ event.status === 'played' 
                 ? <>
                     <span>{ event.result?.homeGoals }</span>
                     <span> : </span>
@@ -15,7 +15,7 @@ const SingleEvent = ({ event }: { event: Event }) => {
                     <span>{ new Date(`${event.dateVenue}, ${event.timeVenueUTC}`).toLocaleTimeString('en-US', { hour12: false }).slice(0,-3)}</span>
                 </> 
             }</span> 
-            <span>{ event.awayTeam?.name || "TBC" }</span>
+            <span className="flex-1 w-16 text-left text:base md:text-xl">{ event.awayTeam?.name || "TBC" }</span>
         </div>
     </>
 };
@@ -33,7 +33,7 @@ const Events = ({ events }: { events: Event[] }) => {
         const eventsInCompetition = eventsSorted.filter(event => event.originCompetitionName === competitions[i])
         
         const competition = competitions[i];
-        markup.push(<h2>{competition}</h2>);
+        markup.push(<h2 className="font-bold text:lg md:text-3xl mb-1 md:mb-6">{competition}</h2>);
 
         const stages = stagesInCompetitions[i];
         let stagesSorted: (string | undefined)[] = [];
@@ -46,7 +46,7 @@ const Events = ({ events }: { events: Event[] }) => {
 
         if (stagesSorted.length > 0) {
             stagesSorted.forEach((stage) => {
-                markup.push(<h3>{stage}</h3>);
+                markup.push(<h3 className="italic text:base md:text-xl mb-5">{stage}</h3>);
                 const eventsInStage = eventsInCompetition.filter(event => event.stage?.name === stage);
                 eventsInStage.forEach((event) => {
                     markup.push(<SingleEvent event={event}/>);
@@ -72,12 +72,21 @@ interface Props {
 export default function EventsList({ events, exitEventsView, selectedDate }: Props) {
     
     return <>
-        <button onClick={ exitEventsView }>Back to calendar view</button>
-        <div>Events scheduled for { selectedDate.toDateString() }</div>
+    <div className="mt-1 mb-2">
+        <button 
+            className="bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded md:text-lg md:mb-6"
+            onClick={ exitEventsView }
+        >
+            &lt; Return to calendar view
+        </button>
+    </div>
+        <div className="mb-2">
+            <h2 className="text:base md:text-xl md:mb-4">Events scheduled for {<span className="font-bold">{selectedDate.toDateString()}</span>}</h2>
+        </div>
         { events.length > 0 
             ? <Events events={events}/>
             : <div>
-                <span>No events</span>
+                <span className="text:base md:text-xl md:mb-4">No events scheduled</span>
             </div>
         }
     </>
